@@ -86,7 +86,7 @@ app.on('ready', () => {
     
     // Select a random port number to avoid race collision when multiple instances might start at once, between "default" and max.
     let randomElectronPort = Math.floor(
-        Math.random() * (65535 - defaultElectronPort) + defaultElectronPort;
+        Math.random() * (65535 - defaultElectronPort) + defaultElectronPort
     )
     
     // hostname needs to be localhost, otherwise Windows Firewall will be triggered.
