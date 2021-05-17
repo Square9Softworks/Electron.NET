@@ -9,28 +9,32 @@ echo "Restore & Build CLI"
 cd ElectronNet.CLI
 dotnet restore
 dotnet build
-cd ..
-echo "Restore & Build WebApp Demo"
-cd ElectronNet.WebApp
-dotnet restore
-dotnet build
 
-echo "Invoke electronize build in WebApp Demo"
 
-echo "Install CLI"
+:: DISABLED Build of demo app for CI efficiency for now.
 
-dotnet tool uninstall ElectronNET.CLI -g
-dotnet tool install ElectronNET.CLI -g
+:: cd ..
+:: echo "Restore & Build WebApp Demo"
+:: cd ElectronNet.WebApp
+:: dotnet restore
+:: dotnet build
 
-echo "/target xxx (dev-build)"
-electronize build /target custom win7-x86;win /dotnet-configuration Debug /electron-arch ia32  /electron-params "--publish never"
+:: echo "Invoke electronize build in WebApp Demo"
 
-echo "/target win (dev-build)"
-electronize build /target win /electron-params "--publish never"
+:: echo "Install CLI"
 
-echo "/target custom win7-x86;win (dev-build)"
+:: dotnet tool uninstall ElectronNET.CLI -g
+:: dotnet tool install ElectronNET.CLI -g
 
-electronize build /target custom win7-x86;win /electron-params "--publish never"
+:: echo "/target xxx (dev-build)"
+:: electronize build /target custom win7-x86;win /dotnet-configuration Debug /electron-arch ia32  /electron-params "--publish never"
+
+:: echo "/target win (dev-build)"
+:: electronize build /target win /electron-params "--publish never"
+
+:: echo "/target custom win7-x86;win (dev-build)"
+
+:: electronize build /target custom win7-x86;win /electron-params "--publish never"
 
 :: Be aware, that for non-electronnet-dev environments the correct 
 :: invoke command would be dotnet electronize ...
