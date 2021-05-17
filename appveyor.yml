@@ -5,5 +5,5 @@ build_script:
 pull_requests:
   do_not_increment_build_number: true
 artifacts:
-- path: ElectronNET.CLI\bin\desktop
+- path: ElectronNET.CLI\bin
   name: Desktop
