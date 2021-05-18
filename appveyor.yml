@@ -3,7 +3,7 @@ image: Visual Studio 2019
 build_script:
 - cmd: buildReleaseNuGetPackages.cmd
 pull_requests:
-  do_not_increment_build_number: true
+  do_not_increment_build_number: false
 artifacts:
 - path: artifacts
   name: artifacts
