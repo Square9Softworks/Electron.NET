@@ -77,13 +77,20 @@ app.on('ready', () => {
     if (isSplashScreenEnabled()) {
         startSplashScreen();
     }
+    
     // Added default port as configurable for port restricted environments.
     let defaultElectronPort = 8000;
     if (manifestJsonFile.electronPort) {
         defaultElectronPort = (manifestJsonFile.electronPort)
     }
+    
+    // Select a random port number to avoid race collision when multiple instances might start at once, between "default" and max.
+    let randomElectronPort = Math.floor(
+        Math.random() * (65535 - defaultElectronPort) + defaultElectronPort
+    )
+    
     // hostname needs to be localhost, otherwise Windows Firewall will be triggered.
-    portscanner.findAPortNotInUse(defaultElectronPort, 65535, 'localhost', function (error, port) {
+    portscanner.findAPortNotInUse(randomElectronPort, 65535, 'localhost', function (error, port) {
         console.log('Electron Socket IO Port: ' + port);
         startSocketApiBridge(port);
     });
